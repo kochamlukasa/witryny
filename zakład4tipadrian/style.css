@@ -1,0 +1,33 @@
+#container{
+    background-color: beige;
+
+}
+#baner{text-align: center;
+color: brown;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-style: italic;
+}
+#lewy{background-color: aqua;
+float: left;
+height: 190px;
+width: 220px;
+
+}
+
+#prawy{
+background-color: aqua;
+height: 200px;
+width: 200px;
+float: right;
+}
+
+#dolny{
+    
+    float: center;
+}
+
+img{
+width: 240px;
+height: 200px;
+
+}
