@@ -1,0 +1,53 @@
+#container{
+    background-color: yellow;
+    width: 650px;
+    height: 300x;
+    float: left;
+    margin: auto;
+}
+#lewy{
+    background-color: yellow;
+    height: 100px;
+    width: 200px;
+    float: left;
+    margin-left: 230px;
+    padding-top: 2px;
+}
+#prawy{
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+    float: right;
+    padding-top: 20px;
+}
+.warzywa{
+    background-color: lightblue; 
+    height: 147px;
+    width: 300px;
+    float: left;
+    text-align: left;
+    margin-left: 175px;
+}
+
+.cos{
+    padding-bottom: 0px;
+    text-align: right;
+}
+
+img{
+ 
+
+    width: 70px;
+  
+   
+}
+
+#f1{
+    border-radius: 10px;
+    
+    }
+    
+#f2{
+    border-radius: 10px;
+    
+    }
