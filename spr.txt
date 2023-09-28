@@ -1,0 +1,12 @@
+1. Tworzymy baze danych
+CREATE DATABASE warzywniak;
+
+2. Tworzymy tabele
+CREATE TABLE warzywa (
+    idWarzywa int not null AUTO_INCREMENT,
+    Nazwa varchar(255) not null,
+    Cena float not null,
+    Ilosc int not null,
+    Data_zakupu date not null,
+    PRIMARY KEY (idWarzywa)
+);
