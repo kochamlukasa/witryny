@@ -1,0 +1,28 @@
+#container{
+    background-color: lightcoral;
+    width: 650px;
+    height: 80px;
+    float: left;
+}
+#baner{
+    text-align: center;
+    color: blanchedalmond;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;}
+.warzywa{
+    background-color: yellowgreen;
+    height: 300px;
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-left: 175px;
+}
+
+img{
+
+}
+
+#f1{
+    border-radius: 10px;
+    
+    }
