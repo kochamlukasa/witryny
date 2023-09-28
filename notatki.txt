@@ -1,0 +1,184 @@
+imie nazwisko wiek data ur stanowisko
+
+varchar - zmienno znnakowy ile znakow moze mic trzbea podac
+
+https://www.w3schools.com/mysql/default.asp
+
+1. Utworzenie bazy danych.
+CREATE DATABASE 4tip;
+
+2. Utworzenie tabeli
+CREATE TABLE pracownicy (
+    Imię varchar(100),
+    Nazwisko varchar(100),
+    Wiek int,
+    Miasto varchar(100),
+    Stanowisko varchar(100)
+);
+
+3. Dodać wartości do tabeli.
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Jan','Kowalski',35,'Warszawa','Kierowca');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Adrian','Wołowski',18,'Pruszków','Dostawca');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Kacper','Makuch',25,'Warszawa','Minister');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Zbigniew','Nowak',45,'Grodzisko','Programista');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Ewa','Maj',35,'Adamów','Kierowca');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Jolanta','Marzec',19,'Józefin','Nauczyciel');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Urszula','Luty',28,'Polon','Policjant');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Marzena','Styczeń',27,'Praga','Strażak');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Józef','Grudzień',26,'Berlin','Strażnik');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Miłosz','Listopad',24,'Warszawa','Kurier');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Józia','Październik',23,'Warszawa','Piekarz');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Marcin','Wrzesień',31,'Warszawa','Aktor');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Jakub','Czerwiec',34,'Warszawa','Betoniarz');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Wiktoria','Misztal',33,'Warszawa','Budowlaniec');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Ewa','Sierpień',32,'Warszawa','Kucharz');
+
+4. Pokaż imiona i nazwiska pracowników w wieku do 40 lat.
+SELECT Imię, Nazwisko, Wiek
+FROM pracownicy
+WHERE Wiek<40;
+
+5. Pokaż ilość pracowników w firmie.
+SELECT COUNT(*)
+FROM pracownicy;
+
+6. Pokaż pracowników, którzy pracują na stanowisku kierowcy.
+SELECT Imię, Nazwisko, Wiek
+FROM pracownicy
+WHERE Stanowisko='Kierowca';
+
+7. Zmiana miasta pracownika.
+UPDATE pracownicy
+SET Miasto='Kraków'
+WHERE Imię='Jan' AND Nazwisko='Kowalski';
+
+8. Wyświetl Kobiety.
+SELECT Imię,Nazwisko,Wiek 
+FROM pracownicy 
+WHERE Imię LIKE '%a';
+
+9. Dodanie wynagrodzenia.
+ALTER TABLE pracownicy
+ADD Wynagrodzenie int
+
+10.Ustalenie wynagordzenia.
+UPDATE pracownicy
+SET Wynagrodzenie = 4001
+WHERE Imię='Józef';
+UPDATE pracownicy
+SET Wynagrodzenie = 4021
+WHERE Imię='Miłosz';
+UPDATE pracownicy
+SET Wynagrodzenie = 4221
+WHERE Imię='Józia';
+UPDATE pracownicy
+SET Wynagrodzenie = 4023
+WHERE Imię='Marcin';
+UPDATE pracownicy
+SET Wynagrodzenie = 10020
+WHERE Imię='Jakub';
+UPDATE pracownicy
+SET Wynagrodzenie = 6002
+WHERE Imię='Ewa';
+UPDATE pracownicy
+SET Wynagrodzenie = 5402
+WHERE Imię='Kacper';
+UPDATE pracownicy
+SET Wynagrodzenie = 1021
+WHERE Imię='Zbigniew';
+UPDATE pracownicy
+SET Wynagrodzenie = 7650
+WHERE Imię='Jolanta';
+UPDATE pracownicy
+SET Wynagrodzenie = 6432
+WHERE Imię='Grzegorz';
+
+11.Pokaż minimalne wynagrodzenie i maksymalne wynagrodzenie.
+
+SELECT Imię, Nazwisko, Wynagrodzenie FROM pracownicy WHERE Wynagrodzenie=(SELECT MIN(Wynagrodzenie) FROM pracownicy)
+UNION
+SELECT Imię, Nazwisko, Wynagrodzenie FROM pracownicy WHERE Wynagrodzenie=(SELECT MAX(Wynagrodzenie) FROM pracownicy);
+
+12. Posortuj alfabetycznie według nazwisk.
+SELECT Imię, Nazwisko
+FROM pracownicy
+ORDER BY Nazwisko;
+
+13. Dodaj status wynagrodzenia.
+SELECT Imię, Nazwisko, Wiek, Miasto, Stanowisko, Wynagrodzenie,
+(CASE
+  WHEN Wynagrodzenie>6000 THEN 'Dużo'
+    WHEN (Wynagrodzenie>4000 and Wynagrodzenie<6000) THEN 'Średnio'
+    ELSE 'Niskie' END) AS status
+      FROM pracownicy;
+
+
+14. Dodaj komórke.
+ALTER TABLE pracownicy
+ADD nazwa kolumny;
+     
+
+
+
+
+bierze udział w powstaniu styczniowym, jest patriotą, jego miłość ma charakter romantyczny – jest nieszczęśliwa, napotyka przeszkody natury społecznej, jest platoniczna, Wokulski idealizuje wybrankę
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

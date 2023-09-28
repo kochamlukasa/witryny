@@ -1,0 +1,124 @@
+1. Towrzymy tabele z primary key.
+CREATE TABLE pracownicy (
+    idPracownik int not null AUTO_INCREMENT,
+    Imie varchar(255) not null,
+    Nazwisko varchar(255) not null,
+    Wiek int not null,
+    Miasto varchar(100) not null,
+    Stanowisko varchar(100) not null,
+    PRIMARY KEY (idPracownik)
+);
+
+2. Dodajemy użytkowników.
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Jan','Kowalski',35,'Warszawa','Kierowca');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Adrian','Wołowski',18,'Pruszków','Dostawca');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Kacper','Makuch',25,'Warszawa','Minister');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Zbigniew','Nowak',45,'Grodzisko','Programista');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Ewa','Maj',35,'Adamów','Kierowca');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Jolanta','Marzec',19,'Józefin','Nauczyciel');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Urszula','Luty',28,'Polon','Policjant');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Marzena','Styczeń',27,'Praga','Strażak');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Józef','Grudzień',26,'Berlin','Strażnik');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Miłosz','Listopad',24,'Warszawa','Kurier');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Józia','Październik',23,'Warszawa','Piekarz');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Marcin','Wrzesień',31,'Warszawa','Aktor');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Jakub','Czerwiec',34,'Warszawa','Betoniarz');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Wiktoria','Misztal',33,'Warszawa','Budowlaniec');
+INSERT INTO pracownicy(Imię, Nazwisko, Wiek, Miasto, Stanowisko)
+VALUES('Ewa','Sierpień',32,'Warszawa','Kucharz');
+
+3. Stworzyć tabelę z klientami.
+CREATE TABLE klienci (
+    idKlient int not null AUTO_INCREMENT,
+    Imie varchar(255) not null,
+    Nazwisko varchar(255) not null,
+    Telefon varchar(100) not null,
+    PRIMARY KEY (idKlient)
+);
+
+4. Dodawanie klientów do tabeli.
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Michał','Kowalski', '908 423 890');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Adrian','Jarzyna', '433 423 764');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Karol','Grynberg', '864 345 846');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Jakub','Siarnowski', '123 432 724');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Kacper','Piasek', '142 234 425');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Kuba','Sarna', '178 461 723');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Bartosz','Lutowski', '234 532 421');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Jurand','Slesinski', '143 643 414');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Ewa','Sawicka', '432 123 124');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Wiktoria','Widlicka', '123 123 890');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Amelia','Karaskiewicz', '123 423 123');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Igor','Zielinski', '234 423 234');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Szymon','Zajaczkowski', '765 423 342');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Gabriela','Hirny', '765 423 123');
+INSERT INTO klienci(Imie, Nazwisko, Telefon)
+VALUES('Genowefa','Jackowska', '723 414 535');
+
+5.
+
+
+CREATE TABLE uslugi(
+idUsluga int not null AUTO_INCREMENT,
+opis varchar(255) not null,
+data date not null,
+cena int not null,
+idKlient int not null,
+idPracownik int,
+PRIMARY KEY(idUsluga),
+FOREIGN KEY(idKlient) REFERENCES klienci(idKlient),
+FOREIGN KEY(idPracownik) REFERENCES pracownicy(idPracownik));
+
+7. Zlecenia toczenia stali do tabeli uslugi
+7.1przypadek  kiedy pracownika nie ma w pracy
+
+INSERT INTO uslugi(opis, data, cena, idKlient, idPracownik)
+VALUES('toczenie stali', '2023-09-18', 200,
+       (SELECT idKlient FROM klienci WHERE imie='Adrian' AND nazwisko='Jarzyna'),
+       null);
+
+7.2 przypadek kiedy pracownik jestw pracy i zostal wydelegowany do realizacji zleconej uslugi.
+
+INSERT INTO uslugi(opis, data, cena, idKlient, idPracownik)
+VALUES('spawanie stali', '2023-09-22', 180,
+       (SELECT idKlient FROM klienci WHERE imie='Ewa' AND nazwisko='Sawicka'),
+       (SELECT idPracownik FROM pracownicy WHERE imie='Jan' AND nazwisko='Kowalski'));
+
+7.3 Tokarz wraca  z urlopu i mozan go przydzielic do toczenia stali
+
+UPDATE uslugi
+SET idPracownik=(SELECT idPracownik FROM pracownicy WHERE imie='Wiktoria' AND nazwisko='Misztal')
+WHERE idKlient = (SELECT idKlient FROM klienci WHERE imie='Adrian' AND nazwisko='Jarzyna' AND opis='toczenie stali');
+
+
+
+
+
+i co? ja to zrobilm patrz

@@ -1,0 +1,97 @@
+1 towrzenie bazy danych
+CREATE DATABASE Sklep_Przemysłowy;
+
+2 towrzenie tabeli material
+CREATE TABLE material (
+    idMaterial int not null AUTO_INCREMENT,
+    nazwa varchar(255) not null,
+    PRIMARY KEY (idMaterial)
+);
+
+3 dodawanie wartosci do tabeli material
+INSERT INTO material(nazwa)
+VALUES('drewno');
+INSERT INTO material(nazwa)
+VALUES('sklejka');
+INSERT INTO material(nazwa)
+VALUES('mdf');
+INSERT INTO material(nazwa)
+VALUES('plastik');
+INSERT INTO material(nazwa)
+VALUES('stal');
+
+4 Tworzenie tabeli produkty
+CREATE TABLE produkty(
+idProdukt int not null AUTO_INCREMENT,
+nazwa varchar(255) not null,
+cena int not null,
+dataProdukcji date not null,
+idMaterial int,
+PRIMARY KEY(idProdukt),
+FOREIGN KEY(idMaterial) REFERENCES material(idMaterial));
+
+5 Dodawanie wartosci do tabeli produkty
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('krzesło', '120', '2022-08-01',
+       (SELECT idMaterial FROM material WHERE nazwa='drewno'));
+       
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('stół', '300', '2022-07-22',
+       (SELECT idMaterial FROM material WHERE nazwa='mdf'));
+       
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('wiadro', '30', '2022-02-01',
+       (SELECT idMaterial FROM material WHERE nazwa='stal'));
+       
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('szafka', '40', '2022-02-03', null);      
+
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('kosz', '25', '2022-04-04', null);
+
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('grabie', '20', '2022-08-01',
+       (SELECT idMaterial FROM material WHERE nazwa='sklejka'));
+       
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('łopata', '24', '2022-07-22', null);
+
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('szpadel', '45', '2022-02-01', null);
+
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('taczka', '140', '2022-02-03', null);
+
+INSERT INTO produkty(nazwa, cena, dataProdukcji, idMaterial)
+VALUES('piła', '70', '2022-04-04', null);
+
+6 doadanie skljeki do szaafki
+UPDATE produkty
+SET idMaterial=(SELECT idMaterial FROM material WHERE nazwa='sklejka')
+WHERE idProdukt = (SELECT idProdukt FROM produkty WHERE nazwa='szafka' AND cena=40);
+
+8. z czego zostalo wykonane
+SELECT nazwa, idMaterial
+FROM produkty
+
+
+9. nie wiadomo jakim aterial
+SELECT nazwa 
+FROM produkty
+WHERE idMaterial IS null;
+
+10 jakich nie ma
+SELECT nazwa
+FROM material
+Where nazwa='plastik';
+
+11. wszytsjie produkty
+SELECT COUNT(*)
+FROM produkty;
+
+
+
+
+
+
+
