@@ -1,0 +1,24 @@
+#container{
+    background-color: turquoise;
+    width: 400px;
+    margin: auto;
+}
+
+#f1{
+    border-radius: 10px;
+}
+
+.gowno{
+    background-color: yellowgreen;
+    width: 400px;
+    text-align: center;
+    color: gray;
+    margin: auto;
+}
+
+
+.frfr{
+    float: auto;
+}
+
+
