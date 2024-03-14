@@ -1,0 +1,15 @@
+.pasek {
+    width: 20px;
+    height: 40px;
+    background-color: #000;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.zloty-pasek {
+    width: 20px;
+    height: 40px;
+    background-color: gold;
+    display: inline-block;
+    margin-right: 5px;
+}
